@@ -9,7 +9,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.DATABASE_PUBLIC_URL!, { ssl: 'require' });
 
 export async function fetchRevenue() {
   try {
@@ -172,7 +172,12 @@ export async function fetchCustomers() {
     const customers = await sql<CustomerField[]>`
       SELECT
         id,
-        name
+        name,
+        image_url,
+        email,
+        (SELECT COUNT(*) FROM invoices WHERE invoices.customer_id = customers.id) AS total_invoices,
+        (SELECT COALESCE(SUM(amount), 0) FROM invoices WHERE invoices.customer_id = customers.id AND invoices.status = 'pending') AS total_pending,
+        (SELECT COALESCE(SUM(amount), 0) FROM invoices WHERE invoices.customer_id = customers.id AND invoices.status = 'paid') AS total_paid
       FROM customers
       ORDER BY name ASC
     `;

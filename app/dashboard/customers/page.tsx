@@ -1,8 +1,11 @@
+import { fetchCustomers } from "@/app/lib/data";
+import CustomersTable from "@/app/ui/customers/table";
 
-export default function MainCustomers(){
+export default async function MainCustomers() {
+    const customers = await fetchCustomers();
     return(
         <div>
-            <h1>Customers Component</h1>
+            <CustomersTable customers={customers} />
         </div>
     );
 }

@@ -36,8 +36,8 @@ export function RevenueChartSkeleton() {
       <div className="rounded-xl bg-gray-100 p-4">
         <div className="sm:grid-cols-13 mt-0 grid h-[410px] grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4" />
         <div className="flex items-center pb-2 pt-6">
-          <div className="h-5 w-5 rounded-full bg-gray-200" />
-          <div className="ml-2 h-4 w-20 rounded-md bg-gray-200" />
+          <div className="h-5 w-5 rounded-full bg-blue-200" />
+          <div className="ml-2 h-4 w-20 rounded-md bg-blue-200" />
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ export function InvoiceSkeleton() {
         <div className="mr-2 h-8 w-8 rounded-full bg-gray-200" />
         <div className="min-w-0">
           <div className="h-5 w-40 rounded-md bg-gray-200" />
-          <div className="mt-2 h-4 w-12 rounded-md bg-gray-200" />
+          <div className="mt-2 h-4 w-12 rounded-md bg-blue-200" />
         </div>
       </div>
       <div className="mt-2 h-4 w-12 rounded-md bg-gray-200" />
