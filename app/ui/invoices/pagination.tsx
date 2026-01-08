@@ -43,10 +43,12 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             if (allPages.length === 1) position = 'single';
             if (page === '...') position = 'middle';
 
+            const href = typeof page === 'number' ? createPageURL(page) : '#';
+
             return (
               <PaginationNumber
                 key={`${page}-${index}`}
-                href={createPageURL(page)}
+                href={href}
                 page={page}
                 position={position}
                 isActive={currentPage === page}
