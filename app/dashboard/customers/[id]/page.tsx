@@ -1,5 +1,4 @@
 import { fetchCustomers } from "@/app/lib/data";
-import Image from "next/image";
 import { Suspense } from "react";
 import { CardSkeleton } from "@/app/ui/skeletons";
 import CustomerCard from "@/app/ui/customers/card";
@@ -20,7 +19,11 @@ export default async function IdCustomer(props: { params: Promise<{ id: string }
     return (
         <Suspense fallback={<CardSkeleton />}>
             <div>
-                <CustomerCard customer={customerById} />
+                {customerById ? (
+                    <CustomerCard customer={customerById} />
+                ) : (
+                    <div className="text-center text-red-500">Customer not found</div>
+                )}
                 <span className="flex justify-center m-2">{id}</span>
             </div>
         </Suspense>
